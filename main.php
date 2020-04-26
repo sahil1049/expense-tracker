@@ -13,8 +13,8 @@ if(isset($_POST['create'])){
   //  USER DUPLICATION QUERY
    $user_check_query = "SELECT * FROM users WHERE email='$email'  LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
-  $user = mysqli_fetch_assoc($result);
-  if ($user['email'] === $email) {
+ 
+  if (mysqli_fetch_array($result)) {
     session_destroy();
     echo("<script type='text/javascript'>alert('User already exists');
    window.location.href='index.php';
